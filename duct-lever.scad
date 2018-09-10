@@ -44,11 +44,15 @@ module lever(length, width, height, hole_d, prism_size = 6) {
             translate([0,-prism_size/2,height])
                 rotate([0,90,0])
                         prism(height, prism_size/2, prism_size/2);
+            
         };
         
         translate([length, width*2, height/2])
                 rotate([90,0,0])
                     cylinder(width*4, d1=hole_d, d2=hole_d);
+        
+        translate([length + hole_d/6, -width/2, 0])
+                cube([height, width*2, height]);
     }
 }
 
@@ -56,7 +60,7 @@ module duct_lever() {
     // tesselation settings (0.01 mm is fine enough)
     $fs = 0.01;
     
-    length = 100;
+    length = 97;
     width  = 2.5;
     height = 6;
     rounded_end = height/2;
